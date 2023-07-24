@@ -7,3 +7,5 @@
 * va_end (man 3 va_end)
 * va_copy (man 3 va_copy)
 * va_arg (man 3 va_arg)
+## Function
+* The following is project to come up with our own printf function in collaboration Shawn Mbaegbu as part of our group project
