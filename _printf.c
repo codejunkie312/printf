@@ -10,12 +10,8 @@ int _printf(const char *format, ...)
 	int num_chars, i, j;
 	va_list args;
 	print_map print_functions[] = {
-	{'c', print_char},
-	{'s', print_string},
-	{'%', print_percent},
-	{'i', print_int},
-	{'d', print_int},
-	{'b', print_binary},
+	{'c', print_char}, {'s', print_string},	{'%', print_percent},
+	{'i', print_int}, {'d', print_int}, {'b', print_binary},
 	{'\0', NULL}
 	};
 
