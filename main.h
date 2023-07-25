@@ -4,6 +4,11 @@
 #include <stdarg.h>
 #include <unistd.h>
 #include <string.h>
+#include <stdio.h>
+
+#define UNUSED(x) (void)(x)
+#define BUFF_SIZE 1024
+
 
 /**
  * struct sp - struct sp
