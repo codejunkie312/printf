@@ -24,5 +24,6 @@ void print_string(va_list args);
 void print_percent(va_list args);
 void reverse_string(char *str);
 void print_int(va_list args);
+void print_binary(va_list args);
 
 #endif /* MAIN_H */
