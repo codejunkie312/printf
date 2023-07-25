@@ -9,6 +9,12 @@ int _printf(const char *format, ...)
 {
 	int num_chars, i, j;
 	va_list args;
+	print_map print_functions[] = {
+	{'c', print_char},
+	{'s', print_string},
+	{'%', print_percent},
+	{'\0', NULL}
+	};
 
 	va_start(args, format);
 	num_chars = 0;

@@ -16,7 +16,6 @@ typedef struct sp
 	void (*print_function)(va_list);
 } print_map;
 
-extern print_map print_functions[];
 int _printf(const char *format, ...);
 int _putchar(char c);
 void print_char(va_list args);

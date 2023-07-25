@@ -7,6 +7,7 @@
 void print_char(va_list args)
 {
 	char c = va_arg(args, int);
+
 	_putchar(c);
 }
 
@@ -28,15 +29,13 @@ void print_string(va_list args)
 	}
 }
 
+/**
+ * print_percent - Prints a percent sign
+ * @args: A va_list of arguments
+ */
 void print_percent(va_list args)
 {
 	(void)args;
 	_putchar('%');
 }
 
-print_map print_functions[] = {
-	{'c', print_char},
-	{'s', print_string},
-	{'%', print_percent},
-	{'\0', NULL}
-};
