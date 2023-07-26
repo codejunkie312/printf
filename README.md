@@ -9,3 +9,4 @@
 * va_arg (man 3 va_arg)
 ## Function
 * The following is project to come up with our own printf function in collaboration Shawn Mbaegbu as part of our group project
+* Looking forward to contributing to this project with you
