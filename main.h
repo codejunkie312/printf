@@ -39,5 +39,6 @@ int print_octal(va_list args);
 int print_hex(va_list args);
 int print_HEX(va_list args);
 int print_string_non_printable(va_list args);
+int print_pointer(va_list args);
 
 #endif /* MAIN_H */

@@ -34,6 +34,7 @@ print_map *generate_print_map(void)
 	{'i', print_int}, {'d', print_int}, {'b', print_binary},
 	{'u', print_unsigned}, {'o', print_octal}, {'x', print_hex},
 	{'X', print_HEX}, {'S', print_string_non_printable},
+	{'p', print_pointer},
 	{'\0', NULL}
 	};
 
@@ -48,19 +49,18 @@ print_map *generate_print_map(void)
  */
 char *convert(unsigned int num, int base)
 {
-	char *ptr = malloc(50 * sizeof(char));
-	char *end;
+	static const char Representation[] = "0123456789abcdef";
+	static char buffer[50];
+	char *ptr;
 
-	if (ptr == NULL)
-		return (NULL);
+	ptr = &buffer[49];
+	*ptr = '\0';
 
-	end = ptr + 49;
-	*end = '\0';
-
-	do {
-		*--end = "0123456789abcdef"[num % base];
+	do
+	{
+		*--ptr = Representation[num % base];
 		num /= base;
 	} while (num != 0);
-	free(ptr);
-	return (end);
+
+	return (ptr);
 }
