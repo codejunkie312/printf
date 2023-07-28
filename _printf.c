@@ -9,11 +9,7 @@ int _printf(const char *format, ...)
 {
 	int num_chars, i, j;
 	va_list args;
-	print_map print_functions[] = {
-	{'c', print_char}, {'s', print_string},	{'%', print_percent},
-	{'i', print_int}, {'d', print_int}, {'b', print_binary},
-	{'\0', NULL}
-	};
+	print_map *print_functions = generate_print_map();
 
 	va_start(args, format);
 	num_chars = 0;
@@ -29,10 +25,16 @@ int _printf(const char *format, ...)
 			{
 				if (format[i] == print_functions[j].specifier)
 				{
-					print_functions[j].print_function(args);
+					num_chars += print_functions[j].print_function(args);
 					break;
 				}
 				j++;
+			}
+			if (print_functions[j].specifier == '\0')
+			{
+				_putchar('%');
+				_putchar(format[i]);
+				num_chars += 2;
 			}
 		}
 		else

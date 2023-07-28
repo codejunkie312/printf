@@ -5,6 +5,8 @@
 #include <unistd.h>
 #include <string.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <ctype.h>
 
 #define UNUSED(x) (void)(x)
 #define BUFF_SIZE 1024
@@ -24,10 +26,12 @@ typedef struct sp
 
 int _printf(const char *format, ...);
 int _putchar(char c);
+char *convert(int num, int base);
 int print_char(va_list args);
 int print_string(va_list args);
 int print_percent(va_list args);
 void reverse_string(char *str);
+print_map *generate_print_map(void);
 int print_int(va_list args);
 int print_binary(va_list args);
 int print_unsigned(va_list args);

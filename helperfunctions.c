@@ -3,95 +3,96 @@
 /**
  * print_char - prints a character
  * @args: A va_list of arguments
+ * Return: The number of characters printed
  */
-void print_char(va_list args)
+int print_char(va_list args)
 {
-	char c = va_arg(args, int);
+	char c = (char)va_arg(args, int);
 
 	_putchar(c);
+	return (1);
 }
 
 /**
  * print_string - Prints a string
  * @args: A va_list of arguments
+ * Return: the number of characters printed
  */
-void print_string(va_list args)
+int print_string(va_list args)
 {
-	char *str = va_arg(args, char *);
+	char *str = va_arg(args, char*);
+	int i;
 
-	if (str)
+	i = 0;
+	if (str == NULL)
+		str = "(null)";
+	while (str[i] != '\0')
 	{
-		while (*str)
-		{
-			_putchar(*str);
-			str++;
-		}
+		_putchar(str[i]);
+		i++;
 	}
+	return (i);
 }
 
 /**
  * print_percent - Prints a percent sign
  * @args: A va_list of arguments
+ * Return: The number of characters printed
  */
-void print_percent(va_list args)
+int print_percent(va_list args)
 {
 	(void)args;
 	_putchar('%');
+	return (1);
 }
 
 /**
  * print_int - Prints an integer
- * @args: A va_listof arguments
+ * @args: A va_list of arguments
+ * Return: The number of characters printed
  */
-void print_int(va_list args)
+int print_int(va_list args)
 {
-	int n = va_arg(args, int);
-	char buffer[12];
+	char *str;
 	int i;
+	int num = va_arg(args, int);
 
 	i = 0;
-
-	if (n < 0)
+	str = convert(num, 10);
+	if (str == NULL)
+		return (-1);
+	while (str[i] != '\0')
 	{
-		buffer[0] = '-';
+		_putchar(str[i]);
 		i++;
-		n = -n;
 	}
 
-	do {
-		buffer[i] = (n % 10) + '0';
-		i++;
-		n /= 10;
-	} while (n > 0);
-	buffer[i] = '\0';
-	reverse_string(buffer);
-	write(1, buffer, strlen(buffer));
+	free(str);
+	return (i);
 }
 
 /**
  * print_binary - Prints the binary representation of an unsigned integer.
  * @args: a va_list of arguments
+ * Return: The number of characters printed
  */
-void print_binary(va_list args)
+int print_binary(va_list args)
 {
-	unsigned int n = va_arg(args, unsigned int);
-	char buffer[33];
+	unsigned int num = va_arg(args, unsigned int);
+	char *str = convert(num, 2);
 	int i;
 
 	i = 0;
 
-	if (n == 0)
-	{
-		buffer[i++] = '0';
-	}
+	if (str == NULL)
+		return (-1);
 
-	while (n > 0)
+	while (str[i != '\0'])
 	{
-		buffer[i++] = (n & 1) ? '1' : '0';
-		n >>= 1;
+		_putchar(str[i]);
+		i++;
 	}
-	buffer[i] = '\0';
-
-	reverse_string(buffer);
-	write(1, buffer, strlen(buffer));
+	free(str);
+	return (i);
 }
+

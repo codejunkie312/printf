@@ -2,55 +2,98 @@
 
 /**
  * print_unsigned - prints an unsigned int
- * @args: a va_list argument
+ * @args: a va_list arguments
+ * Return: the number of characters printed
  */
-void print_unsigned(va_list args)
+int print_unsigned(va_list args)
 {
 	unsigned int num = va_arg(args, unsigned int);
-	char *num_str = convert(num, 10);
+	char *str = convert(num, 10);
+	int i;
 
-	write(1, num_str, strlen(num_str));
-	free(num_str);
+	i = 0;
+
+	if (str == NULL)
+		return (-1);
+
+	while (str[i] != '\0')
+	{
+		_putchar(str[i]);
+		i++;
+	}
+
+	free(str);
+	return (i);
 }
 
 /**
  * print_octal - print an octal number
  * @args: a va_list argument
+ * Return: The number of characters printed
  */
-void print_octal(va_list args)
+int print_octal(va_list args)
 {
 	unsigned int num = va_arg(args, unsigned int);
-	char *num_str = convert(num, 8);
+	char *str = convert(num, 8);
+	int i;
 
-	write(1, num_str, strlen(num_str));
-	free(num_str);
+	i = 0;
+	if (str == NULL)
+		return (-1);
+	while (str[i] != '\0')
+	{
+		_putchar(str[i]);
+		i++;
+	}
+
+	free(str);
+	return (i);
 }
 
 /**
  * print_hex - prints a number in hex
  * @args: a va_list argument
+ * Return: The number of characters printed
  */
-void print_hex(va_list args)
+int print_hex(va_list args)
 {
 	unsigned int num = va_arg(args, unsigned int);
-	char *num_str = convert(num, 16);
+	char *str = convert(num, 16);
+	int i;
 
-	write(1, num_str, strlen(num_str));
-	free(num_str);
+	if (str == NULL)
+		return (-1);
+	while (str[i] != '\0')
+	{
+		_putchar(tolower(str[i]));
+		i++;
+	}
+	free(str);
+	return (i);
 }
 
 /**
  * print_HEX - prints Hex numbers in uppercase
  * @args: a va_list argument
+ * Return: The number of characters printed
  */
-void print_HEX(va_list args)
+int print_HEX(va_list args)
 {
 	unsigned int num = va_arg(args, unsigned int);
-	char *num_str = convert(num, 16);
+	char *str = convert(num, 16);
 	int i;
 
-	for (i = 0; num_str[i]; i++)
-		num_str[i] = toupper(num_str[i]);
-	write(1, num_str, strlen(num_str));
-	free(num_str);
+	i = 0;
+
+	if (str == NULL)
+		return (-1);
+
+	while (str[i] != '\0')
+	{
+		_putchar(toupper(str[i]));
+		i++;
+	}
+
+	free(str);
+	return (i);
 }
