@@ -11,9 +11,10 @@ int _printf(const char *format, ...)
 	va_list args;
 	print_map *print_functions = generate_print_map();
 
+	if (format == NULL)
+		return (-1);
 	va_start(args, format);
 	num_chars = 0;
-
 	for (i = 0; format[i] != '\0'; i++)
 	{
 		if (format[i] == '%')

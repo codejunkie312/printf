@@ -61,6 +61,6 @@ char *convert(unsigned int num, int base)
 		*--end = "0123456789abcdef"[num % base];
 		num /= base;
 	} while (num != 0);
-
+	free(ptr);
 	return (end);
 }
