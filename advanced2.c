@@ -8,30 +8,18 @@
 int print_pointer(va_list args)
 {
 	void *ptr = va_arg(args, void*);
-	unsigned long int value = (unsigned long int) ptr;
-	char *str;
-	int count, i;
+	int num_chars = 0;
+	char *str = malloc(20);
 
-	count = 0;
-	if (ptr == 0)
+	if (!str)
+		return (-1);
+	sprintf(str, "%p", ptr);
+	while (*str)
 	{
-		_putchar('(');
-		_putchar('n');
-		_putchar('i');
-		_putchar('l');
-		_putchar(')');
-		return (5);
+		_putchar(*str);
+		num_chars++;
+		str++;
 	}
-
-	str = convert(value, 16);
-	_putchar('0');
-	_putchar('x');
-
-	for (i = 0; str[i] != '\0'; i++)
-	{
-		_putchar(str[i]);
-		count++;
-	}
-
-	return (count + 2);
+	free(str - num_chars);
+	return (num_chars);
 }
