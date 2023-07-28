@@ -94,3 +94,46 @@ int print_HEX(va_list args)
 
 	return (i);
 }
+
+/**
+ * print_string_non_printable - Prints a string. for a non-printable characters
+ * (0 < ASCII value < 32 or >= 127), prints \x followed by the ASCII code value
+ * in hexadecimal (upper case - always 2 characters)
+ * @args: a va_list of arguments
+ * Return: The number of characters printed
+ */
+int print_string_non_printable(va_list args)
+{
+	char *str = va_arg(args, char *);
+	int i, count;
+	char temp[5];
+	unsigned char c;
+
+	i = 0;
+	count = 0;
+
+	if (str == NULL)
+		str = "(null)";
+
+	while (str[i])
+	{
+		c = str[i];
+		if ((c > 0 && c < 32) || c >= 127)
+		{
+			_putchar('\\');
+			_putchar('x');
+			sprintf(temp, "%02X", c);
+			_putchar(temp[0]);
+			_putchar(temp[1]);
+			count += 4;
+		}
+		else
+		{
+			_putchar(c);
+			count++;
+		}
+		i++;
+	}
+	return (count);
+}
+

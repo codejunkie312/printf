@@ -33,7 +33,7 @@ print_map *generate_print_map(void)
 	{'c', print_char}, {'s', print_string}, {'%', print_percent},
 	{'i', print_int}, {'d', print_int}, {'b', print_binary},
 	{'u', print_unsigned}, {'o', print_octal}, {'x', print_hex},
-	{'X', print_HEX},
+	{'X', print_HEX}, {'S', print_string_non_printable},
 	{'\0', NULL}
 	};
 
