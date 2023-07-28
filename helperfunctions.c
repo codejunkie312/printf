@@ -85,16 +85,25 @@ int print_int(va_list args)
  */
 int print_binary(va_list args)
 {
-	unsigned int num = va_arg(args, unsigned int);
-	char *str = convert(num, 2);
-	int i;
+	unsigned long int num = va_arg(args, unsigned long int);
+	int is_negative, i;
+	char *str;
 
+	is_negative = 0;
+
+	if ((long int) num < 0)
+	{
+		is_negative = 1;
+		num = ~num + 1;
+	}
+	str = convert(num, 2);
 	i = 0;
-
 	if (str == NULL)
 		return (-1);
 
-	while (str[i != '\0'])
+	if (is_negative)
+		_putchar('-');
+	while (str[i] != '\0')
 	{
 		_putchar(str[i]);
 		i++;
