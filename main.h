@@ -26,7 +26,7 @@ typedef struct sp
 
 int _printf(const char *format, ...);
 int _putchar(char c);
-char *convert(int num, int base);
+char *convert(unsigned int num, int base);
 int print_char(va_list args);
 int print_string(va_list args);
 int print_percent(va_list args);

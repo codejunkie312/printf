@@ -53,22 +53,29 @@ int print_percent(va_list args)
  */
 int print_int(va_list args)
 {
+	int n = va_arg(args, int);
+	unsigned int un;
 	char *str;
-	int i;
-	int num = va_arg(args, int);
+	int count;
 
-	i = 0;
-	str = convert(num, 10);
+	count = 0;
+	if (n < 0)
+	{
+		_putchar('-');
+		un = -n;
+		count++;
+	} else
+		un = n;
+	str = convert(un, 10);
 	if (str == NULL)
 		return (-1);
-	while (str[i] != '\0')
+	while (*str != '\0')
 	{
-		_putchar(str[i]);
-		i++;
+		_putchar(*str);
+		count++;
+		str++;
 	}
-
-	free(str);
-	return (i);
+	return (count);
 }
 
 /**
@@ -92,7 +99,6 @@ int print_binary(va_list args)
 		_putchar(str[i]);
 		i++;
 	}
-	free(str);
 	return (i);
 }
 

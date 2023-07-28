@@ -22,7 +22,6 @@ int print_unsigned(va_list args)
 		i++;
 	}
 
-	free(str);
 	return (i);
 }
 
@@ -46,7 +45,6 @@ int print_octal(va_list args)
 		i++;
 	}
 
-	free(str);
 	return (i);
 }
 
@@ -61,6 +59,7 @@ int print_hex(va_list args)
 	char *str = convert(num, 16);
 	int i;
 
+	i = 0;
 	if (str == NULL)
 		return (-1);
 	while (str[i] != '\0')
@@ -68,7 +67,6 @@ int print_hex(va_list args)
 		_putchar(tolower(str[i]));
 		i++;
 	}
-	free(str);
 	return (i);
 }
 
@@ -94,6 +92,5 @@ int print_HEX(va_list args)
 		i++;
 	}
 
-	free(str);
 	return (i);
 }
