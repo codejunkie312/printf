@@ -7,8 +7,9 @@
  */
 int _printf(const char *format, ...)
 {
-	int num_chars, i, j;
+	int num_chars, i;
 	va_list args;
+	flags_t flags;
 	print_map *print_functions = generate_print_map();
 
 	if (format == NULL)
@@ -20,23 +21,14 @@ int _printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			i++;
-			j = 0;
+			flags = process_flags(format[i]);
+			if (format[i] == '+' || format[i] == ' ' || format[i] == '#')
+			{
+				flags = process_flags(format[i]);
+				i++;
+			}	
+			num_chars += process_spec(format[i], args, flags, print_functions);
 
-			while (print_functions[j].specifier != '\0')
-			{
-				if (format[i] == print_functions[j].specifier)
-				{
-					num_chars += print_functions[j].print_function(args);
-					break;
-				}
-				j++;
-			}
-			if (print_functions[j].specifier == '\0')
-			{
-				_putchar('%');
-				_putchar(format[i]);
-				num_chars += 2;
-			}
 		}
 		else
 		{
@@ -44,8 +36,6 @@ int _printf(const char *format, ...)
 			num_chars++;
 		}
 	}
-
 	va_end(args);
 	return (num_chars);
 }
-
