@@ -21,12 +21,14 @@ int _printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			i++;
+			if (format[i] == '\0')
+				return (0);
 			flags = process_flags(format[i]);
 			if (format[i] == '+' || format[i] == ' ' || format[i] == '#')
 			{
 				flags = process_flags(format[i]);
 				i++;
-			}	
+			}
 			num_chars += process_spec(format[i], args, flags, print_functions);
 
 		}
