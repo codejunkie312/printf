@@ -62,7 +62,7 @@ int print_int(va_list args, flags_t flags)
 {
 	int n = va_arg(args, int);
 	unsigned int un;
-	char *str, *original_ptr;
+	char *str;
 	int count, num_chars;
 
 	num_chars = 0;
@@ -80,7 +80,6 @@ int print_int(va_list args, flags_t flags)
 	} else
 		un = n;
 	str = convert(un, 10);
-	original_ptr = str - (49 - strlen(str));
 	if (str == NULL)
 		return (-1);
 	while (*str != '\0')
@@ -89,7 +88,6 @@ int print_int(va_list args, flags_t flags)
 		count++;
 		str++;
 	}
-	free(original_ptr);
 	return (count + num_chars);
 }
 

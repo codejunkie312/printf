@@ -62,6 +62,7 @@ char *convert(unsigned int num, int base)
 		num /= base;
 	} while (num != 0);
 
+	free(ptr);
 	return (end);
 }
 
